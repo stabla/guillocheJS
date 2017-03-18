@@ -63,7 +63,8 @@ The point attached to the internal circle is to a distance d from the center of 
 
 On wikipedia, we have our equation, so replace it with our notation :
 
-![hypotrochoid_equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/8be83627a6dc32417ac02b2b19f5fe6e0fe9cc0f?raw=true)
+![hypotrochoid_equation_x](https://wikimedia.org/api/rest_v1/media/math/render/svg/8be83627a6dc32417ac02b2b19f5fe6e0fe9cc0f?raw=true)
+![hypotrochoid_equation_y](https://wikimedia.org/api/rest_v1/media/math/render/svg/67138f5859d844b0c0b507fe5300c313e87eccd4?raw=true)
 
 
 In loop, we will draw it progressively, for each new incrementation, we change θ.
@@ -78,7 +79,8 @@ Set the value you want, and you can get something like that :
 ![epitrochoid](https://upload.wikimedia.org/wikipedia/commons/2/20/EpitrochoidIn3.gif?raw=true)
 
 Same for epitrochoid, we have this equation:
-![epitrochoid_equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/dda715d99f0bf446d5c5ef60e27f60a401e03dcc?raw=true)
+![epitrochoid_equation_x](https://wikimedia.org/api/rest_v1/media/math/render/svg/dda715d99f0bf446d5c5ef60e27f60a401e03dcc?raw=true)
+![epitrochoid_equation_y](https://wikimedia.org/api/rest_v1/media/math/render/svg/ec2c6ea0a7878b1c0d59ff413e7922327a103637?raw=true)
 
 Set the value value you want, and you can get something like that :
 ![epitrochoid_preview](https://www.dropbox.com/s/n1u8oaqudhemrfu/epitrochoid_preview_github.png?raw=true)
