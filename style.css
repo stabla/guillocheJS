@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px
+}
+
+canvas {
+  image-rendering: optimizeSpeed;             /* Older versions of FF          */
+  image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+  image-rendering: -webkit-optimize-contrast; /* Safari                        */
+  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated;                 /* Awesome future-browsers       */
+  -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+}
+
+#guilloche, .guilloche-canvas {
+    z-index: -2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#previewCanvas  {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.panel {
+    font-family: 'Source Sans Pro';
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+    background: #eee;
+    bottom: 20px;
+    right: 20px;
+    max-width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease-in-out;
+}
+.panel:hover {
+    background: #ddd;
+}
+.panel a {
+    text-decoration: none;
+    color: #333;
+}
+.panel a img {
+    width: 18px;
+    height: 18px;
+    margin-left: 6px;
+    vertical-align: middle;
+}

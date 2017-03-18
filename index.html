@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guilloché Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        javascript: (function () {
+            var script = document.createElement('script');
+            script.onload = function () {
+                var stats = new Stats();
+                document.body.appendChild(stats.dom);
+                requestAnimationFrame(function loop() {
+                    stats.update();
+                    requestAnimationFrame(loop)
+                });
+            };
+            script.src = 'http://rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
+            document.head.appendChild(script);
+        })()
+    </script>
+</head>
+
+<body>
+    <div id="guilloche">
+    </div>
+    <div class="panel">
+        <a href=""> GitHub
+            <img src="GitHub-Mark-32px.png" alt="GitHub">
+            </a>
+    </div>
+    <div id="previewCanvas"></div>
+    <script src="guiloche-animator.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.0/dat.gui.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var optionsAppearance = {
+                opacity: guillocheJS.appearance.opacity,
+                lineColor: guillocheJS.appearance.lineColor,
+                backColor: guillocheJS.appearance.backColor,
+                lineWidth: guillocheJS.appearance.lineWidth,
+                spirograph: guillocheJS.appearance.spirograph
+            }
+
+            var options = {
+                majorR: guillocheJS.figure.majorR,
+                minorR: guillocheJS.figure.minorR,
+                steps: guillocheJS.figure.steps,
+                Multiplier: guillocheJS.figure.Multiplier,
+                angle: guillocheJS.figure.angle,
+                radius: guillocheJS.figure.radius,
+                amplitude: guillocheJS.figure.amplitude
+            };
+
+            var optionsGoal = {
+                majorR: guillocheJS.figure.majorR,
+                minorR: guillocheJS.figure.minorR,
+                steps: guillocheJS.figure.steps,
+                angle: guillocheJS.figure.angle,
+                radius: guillocheJS.figure.radius,
+                amplitude: guillocheJS.figure.amplitude,
+                Multiplier: guillocheJS.figure.Multiplier
+            };
+
+            function doChange() {
+                /* clear Canvas */
+                guillocheJS.fn.clearIt();
+                guillocheJS.initialStateMemory = JSON.parse(JSON.stringify(guillocheJS.figure));
+                /* ReDraw Guilloché */
+                guillocheJS.fn.drawIt();
+                
+                
+                guillocheJS.motion.iteration = parseInt(1);
+                guillocheJS.fn.animateIt();
+            }
+
+
+            this.gui = new dat.GUI();
+
+            let folderAppearance = gui.addFolder('Appearance');
+            let folderMain = gui.addFolder('Main');
+            folderMain.open();
+            let FolderMotionGoal = gui.addFolder('Manual Animation to:');
+            let folderMotionOpt = gui.addFolder('Animation Option');
+            let folderDownload = gui.addFolder('Download');
+            
+            
+            
+            
+            
+            
+/* ******************************* 
+ * PANEL
+ * APPEARANCE 
+ ********************************* */
+            
+            folderAppearance.add(optionsAppearance, 'opacity', 0, 1).step(0.01).onChange(function (value) {
+                guillocheJS.appearance.opacity = optionsAppearance.opacity
+                doChange()
+            });
+
+            folderAppearance.addColor(optionsAppearance, 'lineColor').onChange(function (value) {
+                guillocheJS.appearance.lineColor = optionsAppearance.lineColor
+                doChange()
+            });
+
+            folderAppearance.addColor(optionsAppearance, 'backColor').onChange(function (value) {
+                guillocheJS.appearance.backColor = optionsAppearance.backColor
+                doChange()
+            });
+
+
+
+            folderAppearance.add(optionsAppearance, 'lineWidth', 0, 5).step(0.1).onChange(function (value) {
+                guillocheJS.appearance.lineWidth = optionsAppearance.lineWidth
+                doChange()
+            });
+
+            folderAppearance.add(optionsAppearance, 'spirograph', ['Hypotrochoid', 'Epitrochoid', 'Hypocycloid']).onChange(function (value) {
+                guillocheJS.appearance.spirograph = optionsAppearance.spirograph
+                doChange()
+            })
+
+            
+/* ******************************* 
+ * PANEL
+ * MAIN FIGURE (OR ANIMATION START) 
+ ********************************* */
+            
+            folderMain.add(options, 'majorR', -100, 300).step(guillocheJS.toChangeStep.majorR).onChange(function (value) {
+                guillocheJS.figure.majorR = options.majorR
+                doChange()
+            });
+
+            folderMain.add(options, 'minorR', -1, 1).step(guillocheJS.toChangeStep.minorR).onChange(function (value) {
+                guillocheJS.figure.minorR = options.minorR
+                doChange()
+            });
+
+            folderMain.add(options, 'steps', -100, 3000).step(guillocheJS.toChangeStep.steps).onChange(function (value) {
+                guillocheJS.figure.steps = options.steps
+                doChange()
+            });
+
+            folderMain.add(options, 'Multiplier', 1, 15).step(guillocheJS.toChangeStep.Multiplier).onChange(function (value) {
+                guillocheJS.figure.Multiplier = options.Multiplier
+                doChange()
+            });
+
+
+            folderMain.add(options, 'angle', -50, 50).step(guillocheJS.toChangeStep.angle).onChange(function (value) {
+                guillocheJS.figure.angle = options.angle
+                doChange()
+            });
+
+            folderMain.add(options, 'radius', -100, 300).step(guillocheJS.toChangeStep.radius).onChange(function (value) {
+                guillocheJS.figure.radius = options.radius
+                doChange()
+            });
+
+            folderMain.add(options, 'amplitude', 0, 50).step(guillocheJS.toChangeStep.amplitude).onChange(function (value) {
+                guillocheJS.figure.amplitude = options.amplitude
+                doChange()
+            });
+
+            var Hide = {
+                Hide: false
+            };
+
+            folderMain.add(Hide, 'Hide').onChange(function (value) {
+                if (value) {
+                    guillocheTag.style.display = 'none';
+                } else {
+                    guillocheTag.style.display = 'block';
+                }
+            })
+
+            
+/* ******************************* 
+ * PANEL
+ * ANIMATION GOAL 
+ ********************************* */
+            
+            var previewMotionGoal = function (guillocheJS) {
+                guillocheJS.finalStateMemory = JSON.parse(JSON.stringify(guillocheJS.finalState));
+                var createPreviewClass = 'previewCanvas';
+                var existsPreview = document.getElementById('previewCanvas').getElementsByClassName('previewCanvas');
+
+                if (existsPreview.length > 0) {
+                    while (document.getElementById('previewCanvas').firstChild) {
+                        document.getElementById('previewCanvas').removeChild(document.getElementById('previewCanvas').firstChild);
+                    }
+                }
+
+                var createPreviewCanvas = document.createElement('canvas');
+                createPreviewCanvas.className = createPreviewClass;
+
+                /* append canvas */
+                document.getElementById('previewCanvas').appendChild(createPreviewCanvas);
+
+                /* Get canvas */
+                var canvasPreview = document.getElementById('previewCanvas').firstElementChild;
+
+                var previewCTX = canvasPreview.getContext('2d');
+                var section_length = 1;
+                /* set size canvas */
+                previewCTX.canvas.width = document.getElementById('previewCanvas').offsetWidth;
+                previewCTX.canvas.height = document.getElementById('previewCanvas').offsetHeight;
+                previewCTX.imageSmoothingEnabled = false;
+                previewCTX.translate((ctx.canvas.width / 2) + 0.5, (ctx.canvas.height / 2) + 0.5); // Center element.
+
+                (function (sourceValue) {
+                    var l, x, y, oldX, oldY;
+                    var sl = 0;
+                    var theta = 0;
+                    var difference, thetaStep, s, addition, radiusGame;
+
+                    previewCTX.strokeStyle = '#C2185B';
+                    previewCTX.lineWidth = 0.5;
+                    sourceValue = typeof sourceValue !== 'undefined' ? sourceValue : 42;
+                    difference = guillocheJS.finalState.majorR - guillocheJS.finalState.minorR;
+
+                    thetaStep = guillocheJS.finalState.Multiplier * Math.PI / guillocheJS.finalState.steps;
+
+                    s = (guillocheJS.finalState.majorR - guillocheJS.finalState.minorR) / guillocheJS.finalState.minorR;   
+                    addition = guillocheJS.finalState.majorR + guillocheJS.finalState.minorR;
+                    subtraction = guillocheJS.finalState.majorR - guillocheJS.finalState.minorR;
+                    radiusGame = guillocheJS.finalState.minorR + guillocheJS.finalState.radius;
+
+  for (var t = 0; t <= guillocheJS.finalState.steps; t++) {
+            choosenSpirograph = guillocheJS.appearance.spirograph;
+                   
+            if(choosenSpirograph === 'Hypotrochoid') {
+                x = (subtraction * Math.cos((guillocheJS.finalState.angle)*theta)) + (radiusGame * Math.cos((s) * (guillocheJS.finalState.angle * theta)))
+                y =(subtraction * Math.sin((guillocheJS.finalState.angle)*theta)) + (radiusGame * Math.sin((s) * (guillocheJS.finalState.angle * theta)))
+            } 
+            else if (choosenSpirograph === 'Epitrochoid') {
+                x = (addition * Math.cos(guillocheJS.finalState.angle * theta)) + (radiusGame * Math.cos(((addition)/guillocheJS.finalState.minorR) * (guillocheJS.finalState.angle * theta))),
+                y = (addition * Math.sin(guillocheJS.finalState.angle * theta)) + (radiusGame * Math.sin(((addition)/guillocheJS.finalState.minorR) * (guillocheJS.finalState.angle * theta)))
+            } 
+            else if (choosenSpirograph === 'Hypocycloid') {
+                x = (subtraction * Math.cos(guillocheJS.finalState.angle * theta)) + (guillocheJS.finalState.minorR * Math.cos((s) * (guillocheJS.finalState.angle * theta))),
+                y = (subtraction * Math.sin(guillocheJS.finalState.angle * theta)) + (guillocheJS.finalState.minorR * Math.sin((s) * (guillocheJS.finalState.angle * theta)))
+            } else {
+                break;
+            }
+            
+            x *= guillocheJS.finalState.amplitude;
+            y *= guillocheJS.finalState.amplitude;
+
+            if (sl == 0) {
+                previewCTX.beginPath();
+
+                if (t == 0) {
+                    previewCTX.moveTo(x, y);
+                } else {
+                    previewCTX.moveTo(oldX, oldY);
+                    previewCTX.lineTo(x, y);
+                }
+                previewCTX.stroke();
+            } else {
+                // Append to line section
+                previewCTX.lineTo(x, y);
+                previewCTX.stroke();
+            }
+
+            oldX = x;
+            oldY = y;
+            sl++;
+            theta += thetaStep;
+            if (sl == guillocheJS.section_length) sl = 0;
+
+        }
+                })();
+            }
+
+
+            /* Animation Goal, it's final state wished by user */
+            FolderMotionGoal.add(optionsGoal, 'majorR', -100, 300).step(guillocheJS.toChangeStep.majorR).onChange(function (value) {
+                guillocheJS.finalState.majorR = optionsGoal.majorR
+                guillocheJS.finalStateMemory.majorR = optionsGoal.majorR;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(optionsGoal, 'minorR', -1, 1).step(guillocheJS.toChangeStep.minorR).onChange(function (value) {
+                guillocheJS.finalState.minorR = optionsGoal.minorR
+                guillocheJS.finalStateMemory.minorR = optionsGoal.minorR;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(optionsGoal, 'steps', -100, 3000).step(guillocheJS.toChangeStep.steps).onChange(function (value) {
+                guillocheJS.finalState.steps = optionsGoal.steps
+                guillocheJS.finalStateMemory.steps = optionsGoal.steps;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(optionsGoal, 'Multiplier', -10, 20).step(guillocheJS.toChangeStep.Multiplier).onChange(function (value) {
+                guillocheJS.finalState.Multiplier = optionsGoal.Multiplier
+                guillocheJS.finalStateMemory.Multiplier = optionsGoal.Multiplier;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(optionsGoal, 'angle', -50, 50).step(guillocheJS.toChangeStep.angle).onChange(function (value) {
+                guillocheJS.finalState.angle = optionsGoal.angle
+                guillocheJS.finalStateMemory.angle = optionsGoal.angle;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(optionsGoal, 'radius', -100, 300).step(guillocheJS.toChangeStep.radius).onChange(function (value) {
+                guillocheJS.finalState.radius = optionsGoal.radius
+                guillocheJS.finalStateMemory.radisu = optionsGoal.radius;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(optionsGoal, 'amplitude', 0, 50).step(guillocheJS.toChangeStep.amplitude).onChange(function (value) {
+                guillocheJS.finalState.amplitude = optionsGoal.amplitude
+                guillocheJS.finalStateMemory.amplitude = optionsGoal.amplitude;
+                previewMotionGoal(guillocheJS)
+            });
+
+            FolderMotionGoal.add(Hide, 'Hide').onChange(function (value) {
+                if (value) {
+                    document.getElementById('previewCanvas').style.display = 'none';
+                } else {
+                    document.getElementById('previewCanvas').style.display = 'block';
+                }
+            })
+
+/* ******************************* 
+ * PANEL
+ * ANIMATION OPTIONS 
+ ********************************* */
+            var optionsMotion = {
+                duration: guillocheJS.motion.duration,
+                delay: guillocheJS.motion.delay,
+                easing: guillocheJS.motion.easing,
+                iteration: guillocheJS.motion.iteration,
+                direction: guillocheJS.motion.direction,
+                timeBetween: guillocheJS.motion.timeBetween,
+                Animate: false
+            }
+            folderMotionOpt.add(optionsMotion, 'duration').min(0).step(0.1).onChange(function (value) {
+                guillocheJS.motion.duration = value;
+            });
+            folderMotionOpt.add(optionsMotion, 'delay').min(0).step(0.1).onChange(function (value) {
+                guillocheJS.motion.delay = value;
+            });
+            folderMotionOpt.add(optionsMotion, 'easing');
+            folderMotionOpt.add(optionsMotion, 'iteration', {
+                Infinite: 0,
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5
+            }).onChange(function (value) {
+                guillocheJS.motion.iteration = parseInt(value);
+            });
+            folderMotionOpt.add(optionsMotion, 'direction', ['normal', 'alternate-reverse']).onChange(function (value) {
+                guillocheJS.motion.diration = value;
+            });
+            folderMotionOpt.add(optionsMotion, 'timeBetween').onChange(function(value) {
+               guillocheJS.motion.timeBetween = value; 
+            });
+            folderMotionOpt.add(optionsMotion, 'Animate').onChange(function (value) {
+                if (value) {
+                    guillocheJS.animate = true;
+                    guillocheJS.fn.animateIt();
+                } else {
+                    guillocheJS.animate = false;
+                    doChange();
+                }
+            });;
+
+
+/* ******************************* 
+ * PANEL
+ * DOWNLOAD 
+ ********************************* */
+            var downloadAs = function (fileType) {
+                var dlLink = document.createElement('a');
+                dlLink.download = 'guilloche';
+                dlLink.href = fileType;
+                dlLink.dataset.downloadurl = [fileType, dlLink.download, dlLink.href].join(':');
+
+                document.body.appendChild(dlLink);
+                dlLink.click();
+                document.body.removeChild(dlLink);
+            }
+
+            var dlObj = {
+                JPEG: function () {
+                    guillocheJS.appearance.backColor = '#FFFFFF';
+                    //doChange();
+                    downloadAs(canvas_el.toDataURL('image/jpeg'));
+                },
+                PNG: function () {
+                    guillocheJS.appearance.backColor = false;
+                    doChange();
+
+                    // restore to initial state
+                    guillocheJS.appearance.backColor = '#FFFFFF';
+                    //doChange();
+                    downloadAs(canvas_el.toDataURL('image/png'));
+                },
+                JSON: function () {
+                    console.log('hello')
+                    var textFile = null,
+                        makeTextFile = function (text) {
+                            var data = new Blob([text], {
+                                type: 'text/plain'
+                            });
+                            console.log('ie');
+                            // If we are replacing a previously generated file we need to
+                            // manually revoke the object URL to avoid memory leaks.
+                            if (textFile !== null) {
+                                window.URL.revokeObjectURL(textFile);
+                            }
+                            textFile = window.URL.createObjectURL(data);
+                            return textFile;
+                        }
+
+
+                    var link = document.createElement('a');
+                    link.setAttribute('download', 'guilloche.json');
+                    link.href = makeTextFile(JSON.stringify(guillocheJS));
+                    document.body.appendChild(link);
+                    link.click();
+                }
+            }
+
+            folderDownload.add(dlObj, 'JPEG');
+            folderDownload.add(dlObj, 'PNG');
+            folderDownload.add(dlObj, 'JSON');
+
+        };
+    </script>
+</body>
+
+</html>
