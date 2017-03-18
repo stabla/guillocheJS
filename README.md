@@ -1,4 +1,4 @@
-# Guilloché Animator
+# Guilloché Animator -- UNDER CONSTRUCTION
 
 Highly inspired by http://2008.sub.blue/blog/2008/10/10/guilloche.html and 
 
