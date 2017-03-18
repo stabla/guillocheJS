@@ -70,7 +70,7 @@ In loop, we will draw it progressively, for each new incrementation, we change Î
 
 
 Set the value you want, and you can get something like that :
-![hypotrochoid_preview](https://www.dropbox.com/s/e5naqrecg0hfw4j/guilloche_preview_github.png?dl=0?raw=true)
+![hypotrochoid_preview](https://www.dropbox.com/s/e5naqrecg0hfw4j/guilloche_preview_github.png?raw=true)
 
 
 ### Epitrochoid
