@@ -50,7 +50,8 @@ The second step is to draw the figure, but how exactly to draw the figure ? We h
 
 ### Hypotrochoid
 
-(inclure un gif)
+![Hypotrochoid](https://upload.wikimedia.org/wikipedia/commons/f/fa/HypotrochoidOutThreeFifths.gif?raw=true)
+
 
 So, this is, visually how it works. Now, lets do it by math. 
 
@@ -62,13 +63,14 @@ The point attached to the internal circle is to a distance d from the center of 
 
 On wikipedia, we have our equation, so replace it with our notation :
 
-(inclure photo de l'equation)
+![hypotrochoid_equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/8be83627a6dc32417ac02b2b19f5fe6e0fe9cc0f?raw=true)
 
-In loop, we will draw it progressively, for each new incrementation, we change (photo de theta) 
+
+In loop, we will draw it progressively, for each new incrementation, we change θ.
 
 
 Set the value you want, and you can get something like that :
-(inclure photo d'un résultat)
+![hypotrochoid_preview](https://www.dropbox.com/s/e5naqrecg0hfw4j/guilloche_preview_github.png?dl=0?raw=true)
 
 
 ### Epitrochoid
