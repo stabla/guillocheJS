@@ -1,13 +1,9 @@
 # Guilloché Animator -- UNDER CONSTRUCTION
 
-Highly inspired by http://2008.sub.blue/blog/2008/10/10/guilloche.html and 
-
 ## Demo
-
 lien
 
 ## Install it
-
 Download the guilloche-animator.js and put it in your project's folder
 ```
 <script src="guiloche-animator.js"></script>
@@ -15,42 +11,10 @@ Download the guilloche-animator.js and put it in your project's folder
 
 Set the values you want in guilloche-animator.js in the `figure: { ... `
 
-
-
-
-
 ## How it work
-
-
-
-
-L'expliquer mathématiquement
-
-
-
-
-https://github.com/pbakaus/scroller
-https://github.com/pbakaus
-https://andreasrohner.at/posts/Web%20Development/JavaScript/Some-simple-animated-fractals-using-HTML5-Canvas/
-http://www.mathpuzzle.com/MAA/13-Guilloche%20Patterns/mathgames_02_09_04.html
-https://www.google.fr/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q=canvas+path+high+resolution
-https://remysharp.com/2015/07/13/optimising-a-canvas-animation
-http://www.professorcloud.com/js/canvas-nebula-demo.js
-http://mathworld.wolfram.com/Trochoid.html
-http://mathworld.wolfram.com/Hypotrochoid.html
-http://mathworld.wolfram.com/Epitrochoid.html
-http://codular.com/animation-with-html5-canvas
-https://developers.coinbase.com/
-https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/
-
-
-
-# Guilloché Animator
+### Guilloché Animator
 
 Generating some spirography (Hypotrochoid, Epitrochoid or Hypocycloid) and make possible animation. 
-
-
-## How it works.
 
 The first step is to create a HTML5 canvas.
 The second step is to draw the figure, but how exactly to draw the figure ? We have to know, what's a spirograph. At this time, the script only allow to make an Hypotrochoid, Epitrochoid or an Hypocycloid. So let's go to understand how draw a Hypotrochoid.
@@ -102,12 +66,6 @@ Set the value value you want, and you can get something like that :
 Same for hypocycloid
 
 Set the value you want, and you can get something like that : (inclure photo d'un résultat)
-
-
-
-### 
-
-
 
 
 
