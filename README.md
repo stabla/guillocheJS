@@ -50,7 +50,7 @@ The second step is to draw the figure, but how exactly to draw the figure ? We h
 
 ### Hypotrochoid
 
-![Hypotrochoid](https://upload.wikimedia.org/wikipedia/commons/f/fa/HypotrochoidOutThreeFifths.gif?raw=true)
+![hypotrochoid](https://upload.wikimedia.org/wikipedia/commons/f/fa/HypotrochoidOutThreeFifths.gif?raw=true)
 
 
 So, this is, visually how it works. Now, lets do it by math. 
@@ -70,19 +70,20 @@ In loop, we will draw it progressively, for each new incrementation, we change Œ
 
 
 Set the value you want, and you can get something like that :
-![hypotrochoid_preview](https://www.dropbox.com/s/e5naqrecg0hfw4j/guilloche_preview_github.png?raw=true)
+![hypotrochoid_preview](https://www.dropbox.com/s/e5naqrecg0hfw4j/hypotrochoid_preview_github.png?raw=true)
 
 
 ### Epitrochoid
 
-(inclure un gif)
+![epitrochoid](https://upload.wikimedia.org/wikipedia/commons/2/20/EpitrochoidIn3.gif?raw=true)
 
-Same for epitrochoid
+Same for epitrochoid, we have this equation:
+![epitrochoid_equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/dda715d99f0bf446d5c5ef60e27f60a401e03dcc?raw=true)
 
 Set the value value you want, and you can get something like that :
-(inclure photo d'un r√©sultat)
+![epitrochoid_preview](https://www.dropbox.com/s/n1u8oaqudhemrfu/epitrochoid_preview_github.png?raw=true)
 
-### Hypocycloid
+### Hypocycloid -- not complete yet
 
 (inclure un gif)
 
