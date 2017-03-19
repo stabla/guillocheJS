@@ -71,8 +71,8 @@
                 guillocheJS.fn.drawIt();
                 
                 
-                guillocheJS.motion.iteration = parseInt(1);
-                guillocheJS.fn.animateIt();
+                //guillocheJS.motion.iteration = parseInt(1);
+                //guillocheJS.fn.animateIt();
             }
 
 
@@ -338,7 +338,7 @@
                 iteration: guillocheJS.motion.iteration,
                 direction: guillocheJS.motion.direction,
                 timeBetween: guillocheJS.motion.timeBetween,
-                Animate: false
+                Animation: false
             }
             folderMotionOpt.add(optionsMotion, 'duration').min(0).step(0.1).onChange(function (value) {
                 guillocheJS.motion.duration = value;
@@ -363,7 +363,7 @@
             folderMotionOpt.add(optionsMotion, 'timeBetween').onChange(function(value) {
                guillocheJS.motion.timeBetween = value; 
             });
-            folderMotionOpt.add(optionsMotion, 'Animate').onChange(function (value) {
+            folderMotionOpt.add(optionsMotion, 'Animation').onChange(function (value) {
                 if (value) {
                     guillocheJS.animate = true;
                     guillocheJS.fn.animateIt();

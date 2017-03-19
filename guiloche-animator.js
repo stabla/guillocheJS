@@ -319,15 +319,17 @@ console.log(guillocheJS.motion.duration + " duration ");
                          countNq++;
                     if(alreadyReversed) {
                         alreadyReversed = false;
-                        guillocheJS.figure = JSON.parse(JSON.stringify(guillocheJS.initialStateMemory))
+            guillocheJS.figure = JSON.parse(JSON.stringify(guillocheJS.initialStateMemory))
             guillocheJS.finalState = JSON.parse(JSON.stringify(guillocheJS.finalStateMemory))
                      guillocheJS.fn.Easing(guillocheJS.fn.callDrawGeneral, guillocheJS.motion.duration, BezierEasing(guillocheJS.motion.easing));
+                        
+                        
                         
                     } else {
                         
                          alreadyReversed = true;
                         
-                        guillocheJS.figure = JSON.parse(JSON.stringify(guillocheJS.finalStateMemory))
+            guillocheJS.figure = JSON.parse(JSON.stringify(guillocheJS.finalStateMemory))
             guillocheJS.finalState = JSON.parse(JSON.stringify(guillocheJS.initialStateMemory))
                      guillocheJS.fn.Easing(guillocheJS.fn.callDrawGeneral, guillocheJS.motion.duration, BezierEasing(guillocheJS.motion.easing));
                     }  
@@ -376,9 +378,10 @@ console.log(guillocheJS.motion.duration + " duration ");
                 requestAnimationFrame(loop);
                 
                 render(easing(p));
+                
+           
             }
-            
-              // Check if objectLoad !== objectFinal   
+                 // Check if objectLoad !== objectFinal   
                 // RequestAnimation only if AllFalse === false
                 //  if (AllFalse(g.toChange) === false) {
                 if (!isNaN(oldT)) {
@@ -386,10 +389,13 @@ console.log(guillocheJS.motion.duration + " duration ");
                     for (var j in guillocheJS.toChangeStep) {
                         guillocheJS.toChangeStep[j] = Math.abs(guillocheJS.finalState[j] - guillocheJS.figure[j]) / (tDiff);
                     }
+                    
                     console.log(JSON.stringify(guillocheJS.toChangeStep))
+                    console.log(JSON.stringify(guillocheJS.figure))
                 };
 
                 oldT = (Date.now() - start);
+          
             
         }());
     }
@@ -412,9 +418,6 @@ console.log(guillocheJS.motion.duration + " duration ");
     }
 
 }
-
-
-
 
 
 
