@@ -1,7 +1,7 @@
 # Guilloché Animator -- UNDER CONSTRUCTION
+Working fine but needing some improvement. If you want to contribute, it would be really great.
 
-## Demo
-lien
+https://stabla.github.io/guillocheJS/
 
 ## Install it
 Download the guilloche-animator.js and put it in your project's folder
@@ -62,12 +62,5 @@ Set the value value you want, and you can get something like that :
 ![epitrochoid_preview](https://www.dropbox.com/s/n1u8oaqudhemrfu/epitrochoid_preview_github.png?raw=true)
 
 ### Hypocycloid -- not complete yet
-
-(inclure un gif)
-
-Same for hypocycloid
-
-Set the value you want, and you can get something like that : (inclure photo d'un résultat)
-
 
 
