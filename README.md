@@ -29,7 +29,9 @@ So, this is, visually how it works. Now, lets do it by math.
 Not reinvent the wheel. So open your favorite search-engine and check more about " hypotrochoid ", we immediatly falling on [Wikipedia](https://en.wikipedia.org/wiki/Hypotrochoid). 
 
 The radius of the biggest circle will be called `major`, `R` above in the equation.
+
 The radius of the internal circle will be called `minor`, `r` above.
+
 The point attached to the internal circle is to a distance d from the center of this same internal circle. Let's call it `radius`.
 
 On wikipedia, we have our equation, so replace it with our notation :
