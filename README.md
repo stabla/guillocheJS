@@ -1,4 +1,4 @@
-# Guilloché Animator -- UNDER CONSTRUCTION
+# Guilloché Animator -- not maintained anymore
 Working fine but needing some improvement. If you want to contribute, it would be really great.
 
 https://stabla.github.io/guillocheJS/
@@ -61,6 +61,6 @@ Same for epitrochoid, we have this equation:
 Set the value value you want, and you can get something like that :
 ![epitrochoid_preview](https://www.dropbox.com/s/n1u8oaqudhemrfu/epitrochoid_preview_github.png?raw=true)
 
-### Hypocycloid -- not complete yet
+### Hypocycloid -- not done.
 
 
